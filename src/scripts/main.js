@@ -6,6 +6,7 @@ let array;
 
 export const flowController = (setError) => {
 	array = [];
+
 	// insert elements to the array
 	for (let i = 0; i < 9; i++) {
 		let row = [];
@@ -21,11 +22,9 @@ export const flowController = (setError) => {
 	}
 
 	// validating...
-
 	if (!isValidSudoku(array, setError)) return false;
 
 	// trying to find exact values
-
 	let numberOfUnfills = array.flat().filter((item) => item == ".").length;
 	for (let i = 0; i < 10; i++) {
 		if (array.length > 0) exactValueMethod(array, 0, 0);

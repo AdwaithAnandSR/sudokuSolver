@@ -5,11 +5,11 @@ export const isValidSudoku = (board, setError) => {
 	let currentCluesLen = maxCells - unFilled;
 
 	if (currentCluesLen < 17) {
-		setError("Not a valid Sudoku, min 17 clues required");
+		setError("minimum 17 clues required");
 		return false;
 	}
 
-	checkForDuplicates(board, setError);
+	return checkForDuplicates(board, setError);
 };
 
 const checkForDuplicates = (board, setError) => {

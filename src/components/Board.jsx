@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
+
 import { flowController } from "../scripts/main.js";
 
 const SudokuBoard = () => {
@@ -37,11 +39,14 @@ const SudokuBoard = () => {
 				))}
 			</div>
 
-			<div id="error">{error}</div>
-
-			<button id="runBtn" onClick={() => flowController(setError)}>
+			<motion.button
+				whileTap={{ scale: 0.95 }}
+				id="runBtn"
+				onClick={() => flowController(setError)}>
 				Solve Puzzle
-			</button>
+			</motion.button>
+
+			<div id="error">{error}</div>
 
 			<style jsx>{`
 				#board {
@@ -107,7 +112,6 @@ const SudokuBoard = () => {
 				#error {
 					color: #ec2a2a;
 					text-align: center;
-					
 				}
 			`}</style>
 		</div>
