@@ -1,5 +1,18 @@
-export const isValidSudoku = (board) => {
-	
+export const isValidSudoku = (board, setError) => {
+	let minimumCluesNeeded = 17,
+		maxCells = 81;
+	let unFilled = board.flat().filter((item) => item == ".").length;
+	let currentCluesLen = maxCells - unFilled;
+
+	if (currentCluesLen < 17) {
+		setError("Not a valid Sudoku, min 17 clues required");
+		return false;
+	}
+
+	checkForDuplicates(board, setError);
+};
+
+const checkForDuplicates = (board, setError) => {
 	let rowSet = Array.from({ length: 9 }, () => new Set());
 	let colSet = Array.from({ length: 9 }, () => new Set());
 	let gridSet = Array.from({ length: 9 }, () => new Set());
@@ -18,6 +31,7 @@ export const isValidSudoku = (board) => {
 				) {
 					document.getElementById(`${row}${col}`).style.background =
 						"red";
+					setError("Duplicate values found!");
 					return false; // Duplicate found
 				}
 

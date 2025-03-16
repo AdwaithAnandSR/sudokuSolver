@@ -2,6 +2,8 @@ import React from "react";
 import { flowController } from "../scripts/main.js";
 
 const SudokuBoard = () => {
+	const [error, setError] = React.useState(" ");
+
 	const gridIds = Array.from({ length: 9 }, (_, i) => i); // 9 grids
 	const cellIds = Array.from({ length: 9 }, (_, i) => i); // 9 cells per grid
 
@@ -35,7 +37,11 @@ const SudokuBoard = () => {
 				))}
 			</div>
 
-			<button onClick={flowController}>flowController</button>
+			<div id="error">{error}</div>
+
+			<button id="runBtn" onClick={() => flowController(setError)}>
+				Solve Puzzle
+			</button>
 
 			<style jsx>{`
 				#board {
@@ -59,10 +65,11 @@ const SudokuBoard = () => {
 				.cell {
 					width: 100%;
 					height: 100%;
+					color: black;
 					border: 1px solid black;
 					text-align: center;
 					font-size: 1.5rem;
-					font-weight: 700;
+					font-weight: normal;
 					outline: none;
 					caret-color: transparent;
 					padding: 0;
@@ -85,6 +92,22 @@ const SudokuBoard = () => {
 				}
 				input:focus {
 					background: #e1e1e1;
+				}
+				#runBtn {
+					width: 60%;
+					height: 6vh;
+					border-radius: 3vw;
+					margin: 5% 20%;
+					border: 1px solid black;
+					background-color: #09c909;
+					color: white;
+					font-size: 1.3rem;
+					font-weight: bold;
+				}
+				#error {
+					color: #ec2a2a;
+					text-align: center;
+					
 				}
 			`}</style>
 		</div>
