@@ -4,7 +4,7 @@ Sudoku Solver is a web-based tool that helps you solve Sudoku puzzles instantly.
 
 ## Link
 
-[Link Text](https://sudokusolver-omega.vercel.app/)
+[sukodu solver](https://sudokusolver-omega.vercel.app/)
 
 ## ✨ Features
 
